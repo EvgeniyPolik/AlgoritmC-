@@ -15,8 +15,13 @@ namespace Algoritms
             }
             else if (selectedAlgoritm == 2)
             {
-                ListOfAlgoritms.LinearSearch();   
+                ListOfAlgoritms.LinearSearch(false);   
             }
+            else if (selectedAlgoritm == 3)
+            {
+                ListOfAlgoritms.LinearSearch(true);
+            }
+            
         }
 
         public static void Main(string[] args)
@@ -25,7 +30,8 @@ namespace Algoritms
             Dictionary<int, string> catalogAlgoritms = new Dictionary<int, string>() //Словарь алгоритмов
             {
                 {1, "Простое число"},
-                {2, "Линейный поиск"}
+                {2, "Линейный поиск"},
+                {3, "Улучшенный поиск"}
             };
 
             while (true)  // Интрефейс выбора алгоритма
@@ -36,7 +42,7 @@ namespace Algoritms
                     Console.WriteLine(i.ToString() + " " + catalogAlgoritms[i]);
                 }
                 Console.WriteLine("Введите номер алгоритма или exit для выхода: ");
-                string inputStr = Console.ReadLine();
+                string inputStr = Console.ReadLine(); // ввод номера алгоритма
                 Debug.Assert(inputStr != null, nameof(inputStr) + " != null");
                 if (inputStr.ToLower() == "exit")
                 {

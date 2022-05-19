@@ -45,7 +45,7 @@ namespace Algoritms
             }
         }
 
-        public static void LinearSearch()
+        public static void LinearSearch(bool better)
         {
             bool doing = true;
             while (doing = true)
@@ -75,6 +75,11 @@ namespace Algoritms
                             if (mass[j] == foundNum)  // Собственно сам поиск(упрощенно) проверяем все элементы массива
                             {
                                 answer = (j+1).ToString();
+                                if (better)
+                                {
+                                    answer += "( Улучшенный поиск)";
+                                    break; // В улучшенном поиске мы прекращаем поиск, как только что то нашли
+                                }
                             }
                         }
                         Console.WriteLine("Искомый элемент находится на позиции:" + answer);
@@ -86,8 +91,9 @@ namespace Algoritms
                     Console.WriteLine("Неверный ввод, для выхода введите stop");
                 }
             }
- 
+        
             
         }
+        
     }
 }
