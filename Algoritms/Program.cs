@@ -21,6 +21,10 @@ namespace Algoritms
             {
                 ListOfAlgoritms.LinearSearch(true);
             }
+            else if (selectedAlgoritm == 4)
+            {
+                ListOfAlgoritms.SentenelLinerSearch();
+            }
             
         }
 
@@ -31,7 +35,8 @@ namespace Algoritms
             {
                 {1, "Простое число"},
                 {2, "Линейный поиск"},
-                {3, "Улучшенный поиск"}
+                {3, "Улучшенный линейный поиск"},
+                {4, "Сторожевой линеный поиск"}
             };
 
             while (true)  // Интрефейс выбора алгоритма

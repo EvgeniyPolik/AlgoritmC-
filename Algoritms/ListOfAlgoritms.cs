@@ -4,9 +4,43 @@ namespace Algoritms
 {
     public class ListOfAlgoritms
     {
+        private static string[] MakeArray()
+        {
+            while (true)
+            {
+                Console.WriteLine("Введите размер массива или stop для выхода:");
+                string countString = Console.ReadLine();
+                if (countString.ToLower() == "stop")
+                {
+                    string[] result = new[] {"stop"};
+                    return result;
+                }
+                else
+                {
+                    try
+                    {
+                        int countInt = int.Parse(countString);
+                        string[] result = new string[countInt];
+                        for (int i = 0; i < countInt; i++)
+                        {
+                            Console.Write($"Введите элемент массива № {i + 1}: ");
+                            result[i] = Console.ReadLine();
+                        }
+
+                        return result;
+                    }
+                    catch (FormatException)
+                    {
+                        Console.WriteLine("Неверный ввод");
+                    }
+                }
+            }
+
+        
+        }
         public static void PrimeNumber()  // Проверка простого числа
         {
-            Console.WriteLine("Введите проверяемое число");
+            Console.WriteLine("Введите проверяемое число: ");
             string numberStr = Console.ReadLine();
             int numberRepit;
             try
@@ -47,53 +81,64 @@ namespace Algoritms
 
         public static void LinearSearch(bool better)
         {
-            bool doing = true;
-            while (doing = true)
+            string[] mass = MakeArray();
+            Console.Write("Введите искомое значение: ");
+            string foundItem = Console.ReadLine();
+            string answer = "Not found";
+            if (mass[0].ToLower() != "stop")
             {
-                try
+                for (int i = 0; i < mass.Length; i++)
                 {
-                    Console.WriteLine("Введите размер массива: ");
-                    string countString = Console.ReadLine();
-                    if (countString == "stop")
+                    if (mass[i] == foundItem)
                     {
-                        break;
-                    }
-                    else
-                    {
-                        int count = int.Parse(countString);
-                        Console.WriteLine("Введите искомый элемент:");
-                        string foundNum = Console.ReadLine();
-                        string[] mass = new string[count];
-                        string answer = "Not Found";
-                        for (int i = 0; i < count; i++)
+                        answer = (i + 1).ToString();
+                        if (better)
                         {
-                            Console.Write($"Вводите элемент массива № {i + 1}: ");
-                            mass[i] = Console.ReadLine();
+                            answer += "(Улучшенный поиск)";
                         }
-                        for (int j = 0; j < count; j++)
-                        {
-                            if (mass[j] == foundNum)  // Собственно сам поиск(упрощенно) проверяем все элементы массива
-                            {
-                                answer = (j+1).ToString();
-                                if (better)
-                                {
-                                    answer += "( Улучшенный поиск)";
-                                    break; // В улучшенном поиске мы прекращаем поиск, как только что то нашли
-                                }
-                            }
-                        }
-                        Console.WriteLine("Искомый элемент находится на позиции:" + answer);
                         break;
                     }
                 }
-                catch (System.FormatException)
-                {
-                    Console.WriteLine("Неверный ввод, для выхода введите stop");
-                }
+                Console.WriteLine("Искомый элемент находится на позиции: " + answer);
             }
-        
             
         }
-        
+
+        public static void SentenelLinerSearch()
+        {
+            string[] mass = MakeArray();
+            Console.Write("Введите искомое значение: ");
+            string foundItem = Console.ReadLine();
+            string answer = "Not found";
+            string last;
+            if (mass[0].ToLower() != "stop")
+            {
+                if (mass[mass.Length - 1] == foundItem)
+                {
+                    answer = mass.Length.ToString();
+                }
+                else
+                {
+                    last = mass[mass.Length - 1];
+                    mass[mass.Length - 1] = foundItem;
+                    int i = 0;
+                    while (true)
+                    {
+                        if (mass[i] == foundItem)
+                        {
+                            if (i != mass.Length - 1)
+                            {
+                                answer = ( i+1 ).ToString();
+                            }
+                            break;
+                        }
+
+                        i++;
+                    }
+                    mass[mass.Length - 1] = last;
+                }
+                Console.WriteLine("Искомый элемент находится на позиции: " + answer);
+            }
+        }
     }
 }
