@@ -25,6 +25,10 @@ namespace Algoritms
             {
                 ListOfAlgoritms.SentenelLinerSearch();
             }
+            else if (selectedAlgoritm == 5)
+            {
+                ListOfAlgoritms.Factorial();
+            }
             
         }
 
@@ -36,7 +40,8 @@ namespace Algoritms
                 {1, "Простое число"},
                 {2, "Линейный поиск"},
                 {3, "Улучшенный линейный поиск"},
-                {4, "Сторожевой линеный поиск"}
+                {4, "Сторожевой линеный поиск"},
+                {5, "Факториал (рекурсия)"}
             };
 
             while (true)  // Интрефейс выбора алгоритма

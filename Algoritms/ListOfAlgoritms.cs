@@ -140,5 +140,28 @@ namespace Algoritms
                 Console.WriteLine("Искомый элемент находится на позиции: " + answer);
             }
         }
+
+        private static int GetFactorial(int n)
+        {
+            if (n > 0)
+                return n * GetFactorial(n - 1);
+            else
+                return 1;
+        }
+        public static void Factorial()
+        {
+            Console.WriteLine("Введите число для определения факториала: ");
+            string numberString = Console.ReadLine();
+            try
+            {
+                int numberInt = int.Parse(numberString);
+                Console.WriteLine($"Факториал для числа {numberInt}: {GetFactorial(numberInt)}");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
     }
 }
