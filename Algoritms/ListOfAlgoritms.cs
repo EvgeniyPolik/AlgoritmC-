@@ -157,10 +157,34 @@ namespace Algoritms
                 int numberInt = int.Parse(numberString);
                 Console.WriteLine($"Факториал для числа {numberInt}: {GetFactorial(numberInt)}");
             }
-            catch (Exception e)
+            catch (FormatException)
             {
-                Console.WriteLine(e);
-                throw;
+                Console.WriteLine("Не верный ввод");
+            }
+        }
+        // Сам рекурсивный линейный поиск
+        public static string GetRecursiveLinerSearch(string[] array, int i, string foundItem)
+        {
+            if (i == array.Length) 
+                return "Not found";
+            else if (array[i] == foundItem)
+                return (i + 1).ToString();
+            else
+            {
+                i++;
+                return GetRecursiveLinerSearch(array, i, foundItem);
+            }
+        }
+        public static void DoRecursiveLinerSearch()  // Вызов рекрсивного линейного поиска
+        {
+            string[] array = MakeArray();
+            if (array[0].ToLower() != "stop")
+            {
+                Console.WriteLine("Введите искомый элемент:");
+                Console.Write("#: ");
+                string foundItem = Console.ReadLine();
+                string result = GetRecursiveLinerSearch(array, 0, foundItem);
+                Console.WriteLine($"Искомый элемент находится на позиции: {result}");
             }
         }
     }

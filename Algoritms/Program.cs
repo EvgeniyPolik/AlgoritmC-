@@ -29,6 +29,10 @@ namespace Algoritms
             {
                 ListOfAlgoritms.Factorial();
             }
+            else if (selectedAlgoritm == 6)
+            {
+                ListOfAlgoritms.DoRecursiveLinerSearch();
+            }
             
         }
 
@@ -41,7 +45,8 @@ namespace Algoritms
                 {2, "Линейный поиск"},
                 {3, "Улучшенный линейный поиск"},
                 {4, "Сторожевой линеный поиск"},
-                {5, "Факториал (рекурсия)"}
+                {5, "Факториал (рекурсия)"},
+                {6, "Рекурсивный линейный поиск"}
             };
 
             while (true)  // Интрефейс выбора алгоритма
