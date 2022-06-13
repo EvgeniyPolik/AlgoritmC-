@@ -175,7 +175,7 @@ namespace Algoritms
                 return GetRecursiveLinerSearch(array, i, foundItem);
             }
         }
-        public static void DoRecursiveLinerSearch()  // Вызов рекрсивного линейного поиска
+        public static void DoRecursiveLinerSearch()  // Вызов рекурсивного линейного поиска
         {
             string[] array = MakeArray();
             if (array[0].ToLower() != "stop")
@@ -187,5 +187,41 @@ namespace Algoritms
                 Console.WriteLine($"Искомый элемент находится на позиции: {result}");
             }
         }
+
+        private static string[] GetSelectedSort(string[] array, int position)
+        {
+            if (position < array.Length)
+            {
+                int tmp_position = position;
+                for (int i = 0; i < array.Length - position; i++)
+                {
+                    if (string.Compare(array[tmp_position], array[i + position]) > 0)
+                    {
+                        tmp_position = i + position;
+                    }
+                }
+                string temp = array[tmp_position];
+                array[tmp_position] = array[position];
+                array[position] = temp;
+                return GetSelectedSort(array, position + 1);
+            }
+            return array;
+        }
+
+        public static void DoSelectedSort()
+        {
+            string[] array = MakeArray();
+            if (array[0].ToLower() != "stop")
+            {
+                string[] result = GetSelectedSort(array, 0);
+                Console.WriteLine("Отсортированный массив: ");
+                for (int i = 0; i < result.Length; i++)
+                {
+                    Console.Write(result[i] + " ");
+                }
+                Console.WriteLine();
+            }
+        }
     }
+    
 }

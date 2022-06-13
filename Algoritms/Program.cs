@@ -33,6 +33,10 @@ namespace Algoritms
             {
                 ListOfAlgoritms.DoRecursiveLinerSearch();
             }
+            else if (selectedAlgoritm == 8)
+            {
+                ListOfAlgoritms.DoSelectedSort();
+            }
             
         }
 
@@ -46,7 +50,9 @@ namespace Algoritms
                 {3, "Улучшенный линейный поиск"},
                 {4, "Сторожевой линеный поиск"},
                 {5, "Факториал (рекурсия)"},
-                {6, "Рекурсивный линейный поиск"}
+                {6, "Рекурсивный линейный поиск"},
+                {7, "Pass"},
+                {8, "Сортировка выбором"}
             };
 
             while (true)  // Интрефейс выбора алгоритма
